@@ -2,6 +2,7 @@
   "name": "retail-dashboard",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://bonisha005.github.io/accenture/",
   "type": "module",
   "scripts": {
     "dev": "vite",
