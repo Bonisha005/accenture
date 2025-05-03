@@ -10,10 +10,8 @@ import UploadCSV from './components/UploadCSV';
 import RunAgents from './components/RunAgents';
 import PredictionsPanel from './components/PredictionsPanel';
 import ProductAlertsPanel from './components/ProductAlertsPanel';
-import DashboardPage from './components/DashboardPage';
 import RoleSwitcher from './components/RoleSwitcher';
 import ModelVersionsPanel from './components/ModelVersionsPanel';
-
 import { FaBars } from 'react-icons/fa';
 import { UserProvider } from './context/UserContext';
 
@@ -40,6 +38,10 @@ function App() {
         return <InventoryTable refreshKey={refreshKey} />;
       case 'pricing':
         return <PricingTable refreshKey={refreshKey} />;
+      case 'alerts':
+        return <ProductAlertsPanel />;
+      case 'models':
+        return <ModelVersionsPanel />;
       default:
         return <LogsTable refreshKey={refreshKey} />;
     }
@@ -75,21 +77,6 @@ function App() {
 
           <main className="p-6 space-y-6">
             <RoleSwitcher />
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl shadow-md p-6">
-                <UploadCSV />
-              </div>
-              <div className="bg-white rounded-xl shadow-md p-6">
-                <RunAgents onAgentComplete={handleAgentComplete} />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <ProductAlertsPanel />
-              <PredictionsPanel />
-              <ModelVersionsPanel />
-            </div>
-
             <div className="bg-white rounded-xl shadow-md p-6">
               {renderSection()}
             </div>
