@@ -21,7 +21,7 @@ function App() {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const handleAgentComplete = () => {
-    setRefreshKey(prev => prev + 1);
+    setRefreshKey((prev) => prev + 1);
   };
 
   const renderSection = () => {
@@ -66,7 +66,6 @@ function App() {
             >
               <FaBars />
             </button>
-            <h2 className="ml-4 text-lg font-semibold">Retail Agent Dashboard</h2>
           </div>
 
           {/* Page Header */}
@@ -77,6 +76,25 @@ function App() {
 
           <main className="p-6 space-y-6">
             <RoleSwitcher />
+
+            {/* Static Panels */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white rounded-xl shadow-md p-6">
+                <UploadCSV />
+              </div>
+              <div className="bg-white rounded-xl shadow-md p-6">
+                <RunAgents onAgentComplete={handleAgentComplete} />
+              </div>
+            </div>
+
+            {/* Panels with important information */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <ProductAlertsPanel />
+              <PredictionsPanel />
+              <ModelVersionsPanel />
+            </div>
+
+            {/* Dynamic section based on the selected option */}
             <div className="bg-white rounded-xl shadow-md p-6">
               {renderSection()}
             </div>
