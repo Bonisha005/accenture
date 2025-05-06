@@ -6,4 +6,4 @@ export default defineConfig({
   base: '/accenture/',
   plugins: [react()],
 
-})
+});
